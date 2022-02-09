@@ -6,7 +6,7 @@ const SearchBar = () => (
         <input
             type="text"
             id="header-search"
-            placeholder="Search movie or tv show"
+            placeholder="Search Movie or TV Show"
             name="s"
         />
     </form>
