@@ -1,10 +1,10 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Home = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [data, setData] = useState([]);
-                       <h1>Welcome to our Homepage</h1>
+    <h1>Welcome to our Homepage</h1>
     useEffect(() => {
         fetch("http://127.0.0.1:5000/entertainment")
             .then(res => res.json())
@@ -18,22 +18,20 @@ const Home = () => {
                     setError(error);
                 }
             )
-      }, [])
+    }, [])
 
-if (error) {
-    console.log(error);   
-     return <div>Error: {error.message}</div>;
-    } 
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
     else if (!isLoaded) {
         return <div>Loading...</div>;
     } else {
-        console.log(data);
         return (
             <ul>
                 {data.map(item => (
-                <li key={item.id}>
-                    {item.title} 
-                </li>
+                    <li key={item.id}>
+                        {item.title}
+                    </li>
                 ))}
             </ul>
         );
