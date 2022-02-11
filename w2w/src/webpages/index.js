@@ -5,8 +5,8 @@ const Home = () => {
         display: 'flex', justifyContent:
             'center', alignItems: 'center', height: '90vh', background: '#4D4847'
     }}>
-        <h1>Home</h1>
+        <h1>Welcome to our Homepage ! </h1>
     </div>;
 };
 
-export default Home
+export default Home;
