@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchBar from '../search/search';
+import SearchBar from './SearchBar';
 import { Nav, NavMenu } from './NavbarElements';
 
 const Navbar = () => {
@@ -15,4 +15,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
