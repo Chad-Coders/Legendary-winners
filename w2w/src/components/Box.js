@@ -10,7 +10,8 @@ export default function Box(props) {
           alt= {movie.Title}
         />
       </figure>
-      <h4 class="bolder">{movie.Title}</h4>
+     <a href="../entertainment"><h4 class="bolder">{movie.Title}</h4></a>
+
       <span><b>Year: </b>{movie.Year}</span>
     </div>
   );
