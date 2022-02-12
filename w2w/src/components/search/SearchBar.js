@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import './search.css';
 
+
 function Searchbar(props) {
   const {
     onSearch

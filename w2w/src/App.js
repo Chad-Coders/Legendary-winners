@@ -31,7 +31,7 @@ function App() {
 
     <div className="App">
       <div className="container searchApp">
-        <h2 className="title is-2 has-text-centered">
+        <h2 className="title">
           W2W
         </h2>
         <Router>
