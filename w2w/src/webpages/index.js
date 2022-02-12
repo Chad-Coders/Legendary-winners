@@ -27,13 +27,15 @@ const Home = () => {
         return <div>Loading...</div>;
     } else {
         return (
-            <ul>
+            <p>
                 {data.map(item => (
-                    <li key={item.id}>
-                        {item.title}
-                    </li>
+                    <p key={item.id}>
+                        <img
+                            src={`https://images.justwatch.com/poster/${item.poster.replace(/[^0-9]/g, "")}/s592`}
+                            id="imageBox" alt={`${item.title}`}></img>
+                    </p>
                 ))}
-            </ul>
+            </p>
         );
     }
 }
