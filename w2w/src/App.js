@@ -17,7 +17,7 @@ function App() {
     results: []
   });
   const onSearch = async (text) => {
-    const results = await MovieSource.get("/entertainment");
+    const results = await MovieSource.get('/entertainment', { params: { search: text } });
 
     setState(prevState => {
       return { ...prevState, results: results }
