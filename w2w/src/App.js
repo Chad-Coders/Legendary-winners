@@ -1,26 +1,23 @@
 import React, { useState } from "react";
-
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import BoxList from "./components/BoxList";
-import SearchBar from "./components/search/SearchBar";
 import MovieSource from "./api/MovieSource";
-
-//import Navbar from './components/navbar/navIndex';
-
-import Entertainment from './entertainment';
 import './App.css';
+import BoxList from "./components/box/boxList";
+import SearchBar from "./components/search/SearchBar";
+//import Navbar from './components/navbar/navIndex';
+import Entertainment from './entertainment';
+
+
 
 function App() {
-  
-  document.body.style = 'background: #1C3738'; 
+
+  document.body.style = 'background: #1C3738';
 
   const [state, setState] = useState({
     results: []
   });
   const onSearch = async (text) => {
-    const results = await MovieSource.get("/", {
-      params: { s: text, i: "tt3896198", apiKey: "821d565d" },
-    });
+    const results = await MovieSource.get("/entertainment");
 
     setState(prevState => {
       return { ...prevState, results: results }
@@ -31,17 +28,17 @@ function App() {
 
     <div className="App">
       <div className="container searchApp">
-        <h2 className="title">
+        <a id='h2' href="../">
           W2W
-        </h2>
+        </a>
         <Router>
+          <SearchBar onSearch={onSearch} />
 
           <Routes>
             <Route path='/entertainment' exact element={<Entertainment />} />
           </Routes>
 
         </Router>
-        <SearchBar onSearch={onSearch} />
         <BoxList results={state.results} />
       </div>
     </div>
