@@ -6,7 +6,7 @@ import BoxList from "./components/box/boxList";
 import SearchBar from "./components/search/SearchBar";
 //import Navbar from './components/navbar/navIndex';
 import Entertainment from './entertainment';
-
+import Footer from './footer';
 
 
 function App() {
@@ -40,6 +40,7 @@ function App() {
 
         </Router>
         <BoxList results={state.results} />
+        <Footer />
       </div>
     </div>
   );

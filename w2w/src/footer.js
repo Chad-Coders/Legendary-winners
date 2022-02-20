@@ -1,25 +1,29 @@
 import React from "react";
 
 var style = {
-    backgroundColor: "#F8F8F8",
-    borderTop: "1px solid #E7E7E7",
+    backgroundColor: "#1C3738",
+    borderTop: "0px solid #1C3738",
     textAlign: "center",
-    padding: "20px",
+    padding: "35px",
     position: "fixed",
     left: "0",
     bottom: "0",
-    height: "60px",
+    height: "65px",
     width: "100%",
 };
 
-const Footer = React.createClass({
-    render: function () {
-        return (
-            <div style={style}>
-                {this.props.children}
-            </div>
-        );
-    }
-});
+function Footer() {
+    return (
+        <div style={style}>
+     <strong>   
+         <h4 style={{ color: '#F4FFF8' }}> Chad Coders™</h4>
+        <p style={{ color: '#F4FFF8' }}> Any kind of feedback or faced an issue ? 
+            Please feel free to contact us at anytime | 
+            Email : ahmedtaalab95@hotmail.com
+        </p>
+        </strong>    
+    </div>
+    );
+}
 
 export default Footer;
