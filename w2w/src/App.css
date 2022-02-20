@@ -1,8 +1,8 @@
 .App {
   text-align: center;
   font-size: 16px;
-  background-color: #4D4847;
-  padding-top: 1px;
+  background-color: #1C3738;
+  
 }
 
 .title {
@@ -54,6 +54,9 @@
   margin-right: 0;
   border: 0;
   font-weight: bold;
+}
+#h2-bg {
+  background-color: #4D4847;
 }
 
 .img {

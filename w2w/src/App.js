@@ -8,6 +8,11 @@ import SearchBar from "./components/search/SearchBar";
 import Entertainment from './entertainment';
 import Footer from './footer';
 
+var style = {  
+  backgroundColor: "#4D4847",
+  padding: "1px"
+
+};
 
 function App() {
 
@@ -28,9 +33,11 @@ function App() {
 
     <div className="App">
       <div className="container searchApp">
+        <div style={style}>
         <a id='h2' href="../">
           W2W
         </a>
+        </div>
         <Router>
           <SearchBar onSearch={onSearch} />
 
@@ -41,6 +48,7 @@ function App() {
         </Router>
         <BoxList results={state.results} />
         <Footer />
+        
       </div>
     </div>
   );
