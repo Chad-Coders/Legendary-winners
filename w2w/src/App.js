@@ -37,10 +37,10 @@ function App() {
         <a id='h2' href="../">
           W2W
         </a>
-        </div>
-        <Router>
           <SearchBar onSearch={onSearch} />
+        </div>
 
+        <Router>
           <Routes>
             <Route path='/entertainment' exact element={<Entertainment />} />
           </Routes>
