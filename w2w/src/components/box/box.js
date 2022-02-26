@@ -7,6 +7,7 @@ export default function Box(props) {
         <div class="resultCard">
             <figure className="image is-48x48">
                 <img
+                    className="poster"
                     src={`https://images.justwatch.com/poster/${movie.poster.replace(/[^0-9]/g, "")}/s592`}
                     alt={movie.title}
                 />
