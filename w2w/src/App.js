@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MovieSource from "./api/MovieSource";
 import './App.css';
@@ -8,7 +8,7 @@ import SearchBar from "./components/search/SearchBar";
 import Entertainment from './entertainment';
 import Footer from './footer';
 
-var style = {  
+var style = {
   backgroundColor: "#4D4847",
   padding: "1px"
 
@@ -22,7 +22,9 @@ function App() {
     results: []
   });
   const onSearch = async (text) => {
-    const results = await MovieSource.get('/entertainment', { params: { search: text } });
+    const results = await MovieSource.get('/getdata', { params: { search: text } });
+
+    console.log(results)
 
     setState(prevState => {
       return { ...prevState, results: results }
@@ -34,9 +36,9 @@ function App() {
     <div className="App">
       <div className="container searchApp">
         <div style={style}>
-        <a id='h2' href="../">
-          W2W
-        </a>
+          <a id='h2' href="../">
+            W2W
+          </a>
           <SearchBar onSearch={onSearch} />
         </div>
 
@@ -48,7 +50,7 @@ function App() {
         </Router>
         <BoxList results={state.results} />
         <Footer />
-        
+
       </div>
     </div>
   );
