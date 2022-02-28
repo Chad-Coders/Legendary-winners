@@ -1,48 +1,26 @@
+import React from "react";
 import MovieSource from "./api/MovieSource";
 
+export default class Item extends React.Component {
+    state = {
+        item: []
+    }
 
-function getById(id) {
-    var item = MovieSource.get('/entertainment?id=' + id).then((response) => {
+    componentDidMount() {
+        const queryParams = new URLSearchParams(window.location.search);
+        const id = queryParams.get('id');
 
-        return response.data
-    }).catch(error => console.error(`Error: ${error}`))
-}
+        MovieSource.get('/entertainment?id=' + id).then(res => {
+            const item = res.data;
+            this.setState({ item })
+        })
+    }
 
-function Entertainment({ }) {
-
-    const queryParams = new URLSearchParams(window.location.search);
-    const id = queryParams.get('id');
-
-
-
-
-
-
-
-    console.log(getById(id))
-
-
-
-
-
-    return <div style={{
-        display: 'flex', justifyContent:
-            'center', alignItems: 'center', height: '90vh'
-    }}>
-        <h1> test </h1>
-
-        <div className='stream'>
-
-
-            <div className='movieDetails'>
-
-
-
+    render() {
+        return (
+            <div>
+                <h1>{this.state.item.title}</h1>
             </div>
-        </div>
-
-
-    </div>;
-};
-
-export default Entertainment;
+        )
+    }
+}
