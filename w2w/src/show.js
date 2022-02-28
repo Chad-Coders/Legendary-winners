@@ -10,7 +10,7 @@ export default class Item extends React.Component {
         const queryParams = new URLSearchParams(window.location.search);
         const id = queryParams.get('id');
 
-        MovieSource.get('/entertainment?id=' + id).then(res => {
+        MovieSource.get('/show?id=' + id).then(res => {
             const item = res.data;
             this.setState({ item })
         })

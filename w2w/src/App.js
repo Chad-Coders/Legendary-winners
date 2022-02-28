@@ -4,14 +4,14 @@ import MovieSource from "./api/MovieSource";
 import './App.css';
 import BoxList from "./components/box/boxList";
 import SearchBar from "./components/search/SearchBar";
-//import Navbar from './components/navbar/navIndex';
-import Entertainment from './entertainment';
 import Footer from './footer';
+//import Navbar from './components/navbar/navIndex';
+import Movie from './movie';
+import Show from './show';
 
 var style = {
   backgroundColor: "#4D4847",
   padding: "1px"
-
 };
 
 function App() {
@@ -44,7 +44,8 @@ function App() {
 
         <Router>
           <Routes>
-            <Route path='/entertainment' exact element={<Entertainment />} />
+            <Route path='/movie' exact element={<Movie />} />
+            <Route path='/show' exact element={<Show />} />
           </Routes>
 
         </Router>
