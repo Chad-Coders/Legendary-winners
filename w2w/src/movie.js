@@ -1,5 +1,6 @@
 import React from "react";
 import MovieSource from "./api/MovieSource";
+import './stylesheet/style.css';
 const reactStringReplace = require('react-string-replace')
 
 export default class Item extends React.Component {
@@ -21,10 +22,10 @@ export default class Item extends React.Component {
         return (
             <div>
                 <figure className="resultCard">
-                    {reactStringReplace(this.state.item.poster, /(\d+)/g, (match, i) =>
+                    <p>{reactStringReplace(this.state.item.poster, /(\d+)/g, (match, i) =>
                         <img key={i} src={`https://images.justwatch.com/poster/${match}/s592`}
                             alt={this.state.item.title}></img>
-                    )}
+                    )}</p>
                     <h1>{this.state.item.title}</h1>
 
                 </figure>
@@ -36,8 +37,6 @@ export default class Item extends React.Component {
                 <figure className="resultCard">
                     <h3>{this.state.item.original_release_year}</h3>
                 </figure>
-
-
 
             </div>
         )
