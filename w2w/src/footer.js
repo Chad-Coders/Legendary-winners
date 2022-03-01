@@ -1,4 +1,3 @@
-import React from "react";
 import './App.css';
 
 var style = {
@@ -6,7 +5,7 @@ var style = {
     borderTop: "0px solid #1C3738",
     textAlign: "center",
     padding: "25px",
-    position: "fixed",
+    position: "relative",
     left: "0",
     bottom: "0",
     height: "8%",
@@ -16,15 +15,15 @@ var style = {
 function Footer() {
     return (
         <div style={style}>
-     <strong>   
-         <h4 style={{ color: '#F4FFF8' }}> Chad Coders™ </h4>
-        <p style={{ color: '#F4FFF8' }}>
-         <a href="https://www.linkedin.com/in/ahmed-yasser-7b6a351b1/">
-         <img className="img"  src={require("./LinkedIn.png")} alt="LinkedIn"></img></a>
-        </p>
-        </strong>   
-    </div>
-    
+            <strong>
+                <h4 style={{ color: '#F4FFF8' }}> Chad Coders™ </h4>
+                <p style={{ color: '#F4FFF8' }}>
+                    <a href="https://www.linkedin.com/in/ahmed-yasser-7b6a351b1/">
+                        <img className="img" src={require("./LinkedIn.png")} alt="LinkedIn"></img></a>
+                </p>
+            </strong>
+        </div>
+
     );
 }
 

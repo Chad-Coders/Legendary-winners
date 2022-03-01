@@ -5,7 +5,9 @@ const reactStringReplace = require('react-string-replace')
 
 export default class Item extends React.Component {
     state = {
-        item: []
+        item: [],
+        offers: [],
+        seasons: []
     }
 
     componentDidMount() {
@@ -15,26 +17,45 @@ export default class Item extends React.Component {
         MovieSource.get('/show?id=' + id).then(res => {
             const item = res.data;
             this.setState({ item })
+            this.setState({ offers: item.offers })
+            this.setState({ seasons: item.seasons })
         })
     }
 
     render() {
+        console.log("Offers:")
+        console.log(this.state.offers)
+        console.log("Seasons:")
+        console.log(this.state.seasons)
         return (
             <div>
-               <figure className="results">
-                    <p>{reactStringReplace(this.state.item.poster, /(\d+)/g, (match, i) =>
+                <figure className="results">
+                    <h6>{reactStringReplace(this.state.item.poster, /(\d+)/g, (match, i) =>
                         <img key={i} src={`https://images.justwatch.com/poster/${match}/s592`}
                             alt={this.state.item.title}></img>
-                    )}</p>
+                    )}</h6>
                     <h1>{this.state.item.title}</h1>
 
                 </figure>
 
                 <br></br>
 
-                <figure className="results">    
-                <h3>Can be streamed at</h3>
-
+                <figure className="results">
+                    <h3>Can be streamed at</h3>
+                    <figure className="provBox">
+                        {this.state.offers.map(function (prov, i) {
+                            return <div class="boxDiv">
+                                <p key={i} class="provBox2">
+                                    <a href={prov.urls.standard_web}><img src={require(`./img/${prov.package_short_name}.png`)} alt={prov.package_short_name}>
+                                    </img>
+                                    </a>
+                                    <div class="presType">
+                                        {prov.presentation_type}
+                                    </div>
+                                </p>
+                            </div>
+                        })}
+                    </figure>
                 </figure>
 
                 <br></br>

@@ -1,3 +1,13 @@
-p {
+h6 {
     font-size: 0px;
 }
+
+a > img{
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.presType {
+    color: white;
+}
+

@@ -5,6 +5,7 @@ import './App.css';
 import BoxList from "./components/box/boxList";
 import SearchBar from "./components/search/SearchBar";
 import Footer from './footer';
+import Home from './home';
 //import Navbar from './components/navbar/navIndex';
 import Movie from './movie';
 import Show from './show';
@@ -14,7 +15,10 @@ var style = {
   padding: "1px"
 };
 
+var erlich = true;
+
 function App() {
+
 
   document.body.style = 'background: #1C3738';
 
@@ -23,13 +27,13 @@ function App() {
   });
   const onSearch = async (text) => {
     const results = await MovieSource.get('/getdata', { params: { search: text } });
-
-    console.log(results)
-
     setState(prevState => {
       return { ...prevState, results: results }
     })
+    erlich = false
+    console.log(erlich)
   };
+
 
   return (
 
@@ -41,9 +45,11 @@ function App() {
           </a>
           <SearchBar onSearch={onSearch} />
         </div>
-
         <Router>
           <Routes>
+            {
+              erlich && <Route path='/' exact element={<Home />} />
+            }
             <Route path='/movie' exact element={<Movie />} />
             <Route path='/show' exact element={<Show />} />
           </Routes>
@@ -53,6 +59,7 @@ function App() {
         <Footer />
 
       </div>
+
     </div>
   );
 }
