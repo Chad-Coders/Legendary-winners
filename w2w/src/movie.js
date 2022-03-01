@@ -7,7 +7,8 @@ export default class Item extends React.Component {
     state = {
         item: [],
         offers: [],
-        seasons: []
+        seasons: [],
+        scoring: []
     }
 
     componentDidMount() {
@@ -19,14 +20,25 @@ export default class Item extends React.Component {
             this.setState({ item })
             this.setState({ offers: item.offers })
             this.setState({ seasons: item.seasons })
+            this.setState({ scoring: item.scoring })
         })
     }
 
     render() {
-        console.log("Offers:")
-        console.log(this.state.offers)
-        console.log("Seasons:")
-        console.log(this.state.seasons)
+        //TMDB AND IMDB SCORE VARIABLES, EXTRACTIONS
+        var tmdbscore,imdbscore,imdbvotes;
+        for (let index = 0; index < this.state.scoring.length; index++) {
+            const element = this.state.scoring[index];
+            if(element.provider_type === "tmdb:score"){
+                tmdbscore =element.value;
+            }
+            if(element.provider_type === "imdb:score"){
+                imdbscore = element.value;
+            }
+            if(element.provider_type === "imdb:votes"){
+                imdbvotes = element.value;
+            }
+        }
         return (
             <div>
                 <figure className="results">
@@ -35,7 +47,6 @@ export default class Item extends React.Component {
                             alt={this.state.item.title}></img>
                     )}</h6>
                     <h1>{this.state.item.title}</h1>
-
                 </figure>
 
                 <br></br>
@@ -57,10 +68,10 @@ export default class Item extends React.Component {
                         })}
                     </figure>
                 </figure>
-
                 <br></br>
 
                 <figure className="resultsText">
+                    <h3>IMDB rating: {imdbscore} ({imdbvotes}) &emsp; &emsp; TMDB rating: {tmdbscore}  </h3>
                     <h4>Release Year :{this.state.item.original_release_year}</h4>
                     <h4>Description: {this.state.item.short_description}</h4>
                 </figure>
