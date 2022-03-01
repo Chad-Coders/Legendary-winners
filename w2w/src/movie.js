@@ -21,7 +21,7 @@ export default class Item extends React.Component {
     render() {
         return (
             <div>
-               <figure className="results">
+                <figure className="results">
                     <p>{reactStringReplace(this.state.item.poster, /(\d+)/g, (match, i) =>
                         <img key={i} src={`https://images.justwatch.com/poster/${match}/s592`}
                             alt={this.state.item.title}></img>
@@ -32,8 +32,8 @@ export default class Item extends React.Component {
 
                 <br></br>
 
-                <figure className="results">    
-                <h3>Can be streamed at</h3>
+                <figure className="results">
+                    <h3>Can be streamed at</h3>
 
                 </figure>
 
