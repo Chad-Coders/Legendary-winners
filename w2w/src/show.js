@@ -41,6 +41,7 @@ export default class Item extends React.Component {
 
                 <figure className="resultsText">
                     <h4>Release Year :{this.state.item.original_release_year}</h4>
+                    <h4>Avergae episode length  :{this.state.item.runtime} min.</h4>
                     <h4>Description: {this.state.item.short_description}</h4>
                 </figure>
             </div>
