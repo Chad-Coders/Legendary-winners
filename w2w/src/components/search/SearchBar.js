@@ -28,7 +28,7 @@ function Searchbar(props) {
         <input
           type="text"
           id="header-search"
-          placeholder="Search Movie or TV Show"
+          placeholder="Search Here..."
           name="s"
           onChange={handleInput}
           onKeyPress={handleEnterKeyPressed}
