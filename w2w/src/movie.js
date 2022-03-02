@@ -129,21 +129,7 @@ export default class Item extends React.Component {
                     <h4>Description: {this.state.item.short_description}</h4>
                 </figure>
 
-                <figure className="resultsText">
-                    <div className="provBox4">
-                        <h3>Credits</h3>
-                        <h3 className="cred1"> Character Name</h3>
-                        <h3 className="cred2"> starring</h3>
-                        <h3 className="cred3"> Actor</h3>
-                        {this.state.credits.map(function (act, i) {
-                            return <div key={i}>
-                                <h4 className="cred1">{act.character_name}</h4>
-                                <div className="cred2">starring</div>
-                                <h4 className="cred3">{act.name}</h4>
-                            </div>
-                        })}
-                    </div>
-                </figure>
+
             </div>
         )
     }

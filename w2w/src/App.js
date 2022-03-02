@@ -9,6 +9,9 @@ import Home from './home';
 //import Navbar from './components/navbar/navIndex';
 import Movie from './movie';
 import Show from './show';
+var Scroll = require('react-scroll')
+var Element = Scroll.Element;
+var scroller = Scroll.scroller;
 
 var style = {
   backgroundColor: "#4D4847",
@@ -16,6 +19,16 @@ var style = {
 };
 
 var erlich = true;
+
+function ScrollTo() {
+  scroller.scrollTo('scrollToThis', {
+    duration: 1500,
+    delay: 100,
+    smooth: true,
+    containerId: 'ContainerElementID',
+    offset: 50 // Scrolls to element + 50 pixels down the page
+  })
+}
 
 function App() {
 
@@ -32,7 +45,11 @@ function App() {
     })
     erlich = false
     console.log(erlich)
+    ScrollTo()
   };
+
+
+
 
 
   return (
@@ -55,7 +72,8 @@ function App() {
           </Routes>
 
         </Router>
-        <BoxList results={state.results} />
+
+        <BoxList name="scrollToThis" results={state.results} />
         <Footer />
 
       </div>
