@@ -26,16 +26,16 @@ export default class Item extends React.Component {
 
     render() {
         //TMDB AND IMDB SCORE VARIABLES, EXTRACTIONS
-        var tmdbscore,imdbscore,imdbvotes;
+        var tmdbscore, imdbscore, imdbvotes;
         for (let index = 0; index < this.state.scoring.length; index++) {
             const element = this.state.scoring[index];
-            if(element.provider_type === "tmdb:score"){
-                tmdbscore =element.value;
+            if (element.provider_type === "tmdb:score") {
+                tmdbscore = element.value;
             }
-            if(element.provider_type === "imdb:score"){
+            if (element.provider_type === "imdb:score") {
                 imdbscore = element.value;
             }
-            if(element.provider_type === "imdb:votes"){
+            if (element.provider_type === "imdb:votes") {
                 imdbvotes = element.value;
             }
         }
@@ -49,31 +49,100 @@ export default class Item extends React.Component {
                     <h1>{this.state.item.title}</h1>
                 </figure>
 
-                <br></br>
-
                 <figure className="results">
                     <h3>Can be streamed at</h3>
                     <figure className="provBox">
                         {this.state.offers.map(function (prov, i) {
-                            return <div class="boxDiv">
-                                <p key={i} class="provBox2">
-                                    <a href={prov.urls.standard_web}><img src={require(`./img/${prov.package_short_name}.png`)} alt={prov.package_short_name}>
-                                    </img>
-                                    </a>
-                                    <div class="presType">
-                                        {prov.presentation_type}
+                            if (prov.monetization_type === 'flatrate') {
+                                if (prov.package_short_name === 'hbo') {
+                                    return <div class="boxDiv">
+                                        <p key={i} class="provBox2">
+                                            <a href={prov.urls.standard_web}><img src={require(`./img/hbm.png`)} alt='hbm'>
+                                            </img>
+                                            </a>
+                                            <div class="presType">
+                                                {prov.presentation_type}
+                                            </div>
+                                        </p>
                                     </div>
-                                </p>
-                            </div>
+                                } else {
+                                    return <div class="boxDiv">
+                                        <p key={i} class="provBox2">
+                                            <a href={prov.urls.standard_web}><img src={require(`./img/${prov.package_short_name}.png`)} alt={prov.package_short_name}>
+                                            </img>
+                                            </a>
+                                            <div class="presType">
+                                                {prov.presentation_type}
+                                            </div>
+                                        </p>
+                                    </div>
+                                }
+                            } else {
+                                return <div></div>
+                            }
+
+                        })}
+                    </figure>
+                    <h3>Can be bought at</h3>
+                    <figure className="provBox">
+                        {this.state.offers.map(function (prov, i) {
+                            if (prov.monetization_type === 'buy') {
+                                return <div class="boxDiv">
+                                    <p key={i} class="provBox2">
+                                        <a href={prov.urls.standard_web}><img src={require(`./img/${prov.package_short_name}.png`)} alt={prov.package_short_name}>
+                                        </img>
+                                        </a>
+                                        <div class="presType">
+                                            {prov.presentation_type}
+                                        </div>
+                                    </p>
+                                </div>
+                            } else {
+                                return <div></div>
+                            }
+                        })}
+                    </figure>
+                    <h3>Can be rented at</h3>
+                    <figure className="provBox">
+                        {this.state.offers.map(function (prov, i) {
+                            if (prov.monetization_type === 'rent') {
+                                return <div class="boxDiv">
+                                    <p key={i} class="provBox2">
+                                        <a href={prov.urls.standard_web}><img src={require(`./img/${prov.package_short_name}.png`)} alt={prov.package_short_name}>
+                                        </img>
+                                        </a>
+                                        <div class="presType">
+                                            {prov.presentation_type}
+                                        </div>
+                                    </p>
+                                </div>
+                            } else {
+                                return <div></div>
+                            }
                         })}
                     </figure>
                 </figure>
-                <br></br>
 
                 <figure className="resultsText">
                     <h3>IMDB rating: {imdbscore} ({imdbvotes}) &emsp; &emsp; TMDB rating: {tmdbscore}  </h3>
                     <h4>Release Year :{this.state.item.original_release_year}</h4>
                     <h4>Description: {this.state.item.short_description}</h4>
+                </figure>
+
+                <figure className="resultsText">
+                    <div className="provBox4">
+                        <h3>Credits</h3>
+                        <h3 className="cred1"> Character Name</h3>
+                        <h3 className="cred2"> starring</h3>
+                        <h3 className="cred3"> Actor</h3>
+                        {this.state.credits.map(function (act, i) {
+                            return <div key={i}>
+                                <h4 className="cred1">{act.character_name}</h4>
+                                <div className="cred2">starring</div>
+                                <h4 className="cred3">{act.name}</h4>
+                            </div>
+                        })}
+                    </div>
                 </figure>
             </div>
         )
